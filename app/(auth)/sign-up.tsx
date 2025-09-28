@@ -126,11 +126,17 @@ export default function SignUpScreen() {
   }
 
   return (
-    <View className="flex-1 justify-center items-center bg-gray-100 p-4">
+    <View className="flex-1 justify-center items-center bg-gray-100 p-4 ">
       <View className="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
-        <Text className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Sign Up
-        </Text>
+        <View className="flex flex-col">
+          <Text className="text-2xl font-bold text-center  mb-6 text-blue-600 ">
+            Sign Up
+          </Text>
+          <Text className="ext-2xl font-bold text-center  mb-6 text-blue-600">
+            Wellcome Back to *****
+          </Text>
+        </View>
+
         <TextInput
           autoCapitalize="none"
           value={emailAddress}
