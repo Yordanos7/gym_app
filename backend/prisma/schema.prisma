@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id         String       @id @default(cuid())
+  email      String       @unique
+  name       String
+  age        Int?
+  goals      String?
+
+  // Relations
+  categories Category[]      // User-created exercise categories
+  workouts   Workout[]       // Workouts created by the user
+  exercises  Exercise[]      // Exercises created by the user (custom)
+  progress   Progress[]      // User fitness progress over time
+}
+
+model Category {
+  id        String     @id @default(cuid())
+  name      String
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
+
+  exercises Exercise[] // Exercises under this category
+}
+
+model Exercise {
+  id          String             @id @default(cuid())
+  name        String
+  type        String?             // Strength, Cardio, Yoga, etc.
+  youtubeUrl  String?             // Optional YouTube video link
+  notes       String?
+  equipment   String?             // Optional: Dumbbell, Barbell, None
+
+  // Ownership
+  userId      String              // Creator (user)
+  user        User                @relation(fields: [userId], references: [id])
+
+  // Category relation
+  categoryId  String?
+  category    Category?           @relation(fields: [categoryId], references: [id])
+
+  // Relation with workouts (junction table)
+  workoutExercises WorkoutExercise[]
+}
+
+
+// WORKOUT: Represents a full workout session
+model Workout {
+  id        String              @id @default(cuid())
+  name      String
+  date      DateTime?           
+  userId    String
+  user      User                @relation(fields: [userId], references: [id])
+
+  // Exercises in this workout
+  workoutExercises WorkoutExercise[]
+}
+
+
+model WorkoutExercise {
+  id         String    @id @default(cuid())
+  workoutId  String
+  exerciseId String
+  sets       Int
+  reps       Int
+  weight     Float?
+  order      Int       // Order in the workout
+
+  workout   Workout   @relation(fields: [workoutId], references: [id])
+  exercise  Exercise  @relation(fields: [exerciseId], references: [id])
+}
+
+model Progress {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  date      DateTime  @default(now())
+  weight    Float
+  bodyFat   Float?    // Optional
+  muscleMass Float?   // Optional
+  notes     String?
+}

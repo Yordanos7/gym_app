@@ -1,50 +1,21 @@
-# Welcome to your Expo app 👋
+// the app would have this database models
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+the first users model
 
-## Get started
+2nd Category
 
-1. Install dependencies
+3rd Exercise
 
-   ```bash
-   npm install
-   ```
+4th WorkoutExercise
 
-2. Start the app
+5th Progress
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+| Model               | Purpose                                                    |
+| ------------------- | ---------------------------------------------------------- |
+| **User**            | Auth + profile + owns workouts, exercises, progress        |
+| **Category**        | Organize exercises/workouts into logical groups            |
+| **Exercise**        | Stores exercise info, YouTube video, type, notes           |
+| **Workout**         | Represents a workout session containing multiple exercises |
+| **WorkoutExercise** | Links Workout ↔ Exercise, tracks sets/reps/weight, order   |
+| **Progress**        | Track weight, strength, body measurements over time        |
+| **Optional**        | FavoriteExercises / Bookmarks, extra metrics in Progress   |
