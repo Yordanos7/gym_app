@@ -14,7 +14,7 @@ export default function Index() {
       const timer = setTimeout(() => {
         setIsLoadingSplash(false);
         if (isSignedIn) {
-          router.replace("/");
+          router.replace("/screens");
         } else {
           router.replace("/sign-in");
         }
