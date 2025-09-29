@@ -3,6 +3,9 @@ import cors from "cors";
 import morgan from "morgan";
 import userRoutes from "./routes/userRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
+import exerciseRoutes from "./routes/exerciseRoutes";
+import workoutRoutes from "./routes/workoutRoutes";
+import progressRoutes from "./routes/progressRoutes";
 
 const app = express();
 
@@ -13,5 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", userRoutes); // <-- USE YOUR ROUTES
 app.use("/api/categories", categoryRoutes); // <== this is for categories route
+app.use("/api/exercises", exerciseRoutes);
+app.use("/api/workouts", workoutRoutes);
+app.use("/api/progress", progressRoutes);
 
 export default app;
