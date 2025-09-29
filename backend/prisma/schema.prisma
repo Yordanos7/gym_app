@@ -18,9 +18,12 @@ datasource db {
 model User {
   id         String       @id @default(cuid())
   email      String       @unique
+  password   String       // Added password field
   name       String
   age        Int?
   goals      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   // Relations
   categories Category[]      // User-created exercise categories
@@ -37,6 +40,7 @@ model Category {
 
   exercises Exercise[] // Exercises under this category
 }
+
 
 model Exercise {
   id          String             @id @default(cuid())
