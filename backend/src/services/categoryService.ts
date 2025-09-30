@@ -1,16 +1,9 @@
-import prisma from "../config/db";
-import { Category } from "../../generated/prisma";
+import prisma from "../config/db.ts";
+import type { Prisma, Category } from "../../generated/prisma/client.d.ts";
+import { PrismaClient } from "../../generated/prisma/client.js";
 
-// this is type for doing the tasks ok y
-
-export type CategoryCreationData = {
-  name: string;
-  userId: string;
-};
-
-export type CategoryUpdateData = {
-  name?: string;
-};
+export type CategoryCreationData = Prisma.CategoryCreateInput;
+export type CategoryUpdateData = Prisma.CategoryUpdateInput;
 
 export const createCategory = async (
   data: CategoryCreationData

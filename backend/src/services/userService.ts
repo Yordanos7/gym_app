@@ -1,5 +1,6 @@
 import prisma from "../config/db.ts";
-import { Prisma, User } from "../../generated/prisma/client.js";
+import type { Prisma, User } from "../../generated/prisma/client.d.ts";
+import { PrismaClient } from "../../generated/prisma/client.js";
 import bcrypt from "bcryptjs";
 
 export type UserCreationData = Prisma.UserCreateInput;

@@ -1,14 +1,11 @@
 // gymapp/backend/src/services/exerciseService.ts
 
-import prisma from "../config/db";
-import { Exercise } from "../../generated/prisma";
+import prisma from "../config/db.ts";
+import type { Prisma, Exercise } from "../../generated/prisma/client.d.ts";
+import { PrismaClient } from "../../generated/prisma/client.js";
 
-// Type for the data needed to create a new exercise.
-// All fields from the Prisma model are included except the auto-generated ones.
-export type ExerciseCreationData = Omit<Exercise, "id">;
-
-// Type for updating an exercise. All fields are optional.
-export type ExerciseUpdateData = Partial<ExerciseCreationData>;
+export type ExerciseCreationData = Prisma.ExerciseCreateInput;
+export type ExerciseUpdateData = Prisma.ExerciseUpdateInput;
 
 /**
  * Creates a new exercise.

@@ -1,4 +1,5 @@
-import { Request, Response, NextFunction } from "express";
+import express from "express";
+import type { Request, Response, NextFunction } from "express";
 import * as authService from "../services/authService.ts";
 
 export const register = async (

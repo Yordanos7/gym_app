@@ -1,6 +1,7 @@
 // gymapp/backend/src/controllers/progressController.ts
 
-import { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express";
 import * as progressService from "../services/progressService.ts";
 
 /**

@@ -1,16 +1,11 @@
 // gymapp/backend/src/services/progressService.ts
 
-import prisma from "../config/db";
-import { Progress } from "../../generated/prisma";
+import prisma from "../config/db.ts";
+import type { Prisma, Progress } from "../../generated/prisma/client.d.ts";
+import { PrismaClient } from "../../generated/prisma/client.js";
 
-// Type for creating a new progress entry.
-// All fields from the model are included except the auto-generated ones.
-export type ProgressCreationData = Omit<Progress, "id" | "date"> & {
-  date?: Date;
-};
-
-// Type for updating a progress entry. All fields are optional.
-export type ProgressUpdateData = Partial<ProgressCreationData>;
+export type ProgressCreationData = Prisma.ProgressCreateInput;
+export type ProgressUpdateData = Prisma.ProgressUpdateInput;
 
 /**
  * Creates a new progress entry for a user.

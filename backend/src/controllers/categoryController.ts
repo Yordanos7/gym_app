@@ -1,6 +1,7 @@
 // gymapp/backend/src/controllers/categoryController.ts
 
-import { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express";
 import * as categoryService from "../services/categoryService.ts";
 
 export const createCategory = async (req: Request, res: Response) => {
@@ -9,7 +10,14 @@ export const createCategory = async (req: Request, res: Response) => {
     if (!name || !userId) {
       return res.status(400).json({ message: "Name and userId are required" });
     }
-    const category = await categoryService.createCategory({ name, userId });
+    const category = await categoryService.createCategory({
+      name,
+      user: {
+        connect: {
+          id: userId,
+        },
+      },
+    });
     res.status(201).json(category);
   } catch (error) {
     res.status(500).json({ message: "Error creating category", error });

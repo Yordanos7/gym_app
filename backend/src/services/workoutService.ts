@@ -1,10 +1,13 @@
 // gymapp/backend/src/services/workoutService.ts
 
-import prisma from "../config/db";
-import { Workout, WorkoutExercise } from "../../generated/prisma";
+import prisma from "../config/db.ts";
+import type {
+  Prisma,
+  Workout,
+  WorkoutExercise,
+} from "../../generated/prisma/client.d.ts";
+import { PrismaClient } from "../../generated/prisma/client.js";
 
-// This type defines the structure for an exercise when creating a workout.
-// We only need the exercise's ID and the details like sets, reps, etc.
 type ExerciseInWorkout = {
   exerciseId: string;
   sets: number;
@@ -13,9 +16,6 @@ type ExerciseInWorkout = {
   order: number;
 };
 
-// This is the main type for creating a new workout.
-// It includes the workout's name, date, the user it belongs to,
-// and an array of the exercises included in it.
 export type WorkoutCreationData = {
   name: string;
   date?: Date;

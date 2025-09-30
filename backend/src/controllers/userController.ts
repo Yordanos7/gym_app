@@ -1,4 +1,5 @@
-import { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
 
 export const getAllUsers = async (req: Request, res: Response) => {

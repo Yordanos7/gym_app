@@ -1,6 +1,7 @@
 // gymapp/backend/src/controllers/exerciseController.ts
 
-import { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express";
 import * as exerciseService from "../services/exerciseService.ts";
 
 /**
