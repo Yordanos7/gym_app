@@ -1,7 +1,7 @@
 // gymapp/backend/src/routes/workoutRoutes.ts
 
 import { Router } from "express";
-import * as workoutController from "../controllers/workoutController";
+import * as workoutController from "../controllers/workoutController.ts";
 
 const router = Router();
 

@@ -1,14 +1,14 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import userRoutes from "./routes/userRoutes";
-import categoryRoutes from "./routes/categoryRoutes";
-import exerciseRoutes from "./routes/exerciseRoutes";
-import workoutRoutes from "./routes/workoutRoutes";
-import progressRoutes from "./routes/progressRoutes";
+import userRoutes from "./routes/userRoutes.ts";
+import categoryRoutes from "./routes/categoryRoutes.ts";
+import exerciseRoutes from "./routes/exerciseRoutes.ts";
+import workoutRoutes from "./routes/workoutRoutes.ts";
+import progressRoutes from "./routes/progressRoutes.ts";
 
 const app = express();
-
+const port = 5000;
 app.use(cors());
 app.use(morgan("dev")); // Logs HTTP requests to the console
 app.use(express.json()); // Parses incoming JSON requests
@@ -19,5 +19,9 @@ app.use("/api/categories", categoryRoutes); // <== this is for categories route
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/progress", progressRoutes);
+
+app.listen(port, () => {
+  console.log("the server is running");
+});
 
 export default app;

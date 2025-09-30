@@ -1,7 +1,7 @@
 // gymapp/backend/src/routes/categoryRoutes.ts
 
 import { Router } from "express";
-import * as categoryController from "../controllers/categoryController";
+import * as categoryController from "../controllers/categoryController.ts";
 
 const router = Router();
 

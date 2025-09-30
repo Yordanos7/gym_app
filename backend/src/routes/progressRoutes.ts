@@ -1,7 +1,7 @@
 // gymapp/backend/src/routes/progressRoutes.ts
 
 import { Router } from "express";
-import * as progressController from "../controllers/progressController";
+import * as progressController from "../controllers/progressController.ts";
 
 const router = Router();
 

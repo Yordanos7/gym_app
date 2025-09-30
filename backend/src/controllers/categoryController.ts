@@ -1,7 +1,7 @@
 // gymapp/backend/src/controllers/categoryController.ts
 
 import { Request, Response } from "express";
-import * as categoryService from "../services/categoryService";
+import * as categoryService from "../services/categoryService.ts";
 
 export const createCategory = async (req: Request, res: Response) => {
   try {

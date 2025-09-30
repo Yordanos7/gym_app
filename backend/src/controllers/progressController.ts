@@ -1,7 +1,7 @@
 // gymapp/backend/src/controllers/progressController.ts
 
 import { Request, Response } from "express";
-import * as progressService from "../services/progressService";
+import * as progressService from "../services/progressService.ts";
 
 /**
  * Controller to create a new progress entry.

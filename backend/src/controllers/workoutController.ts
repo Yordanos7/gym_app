@@ -1,7 +1,7 @@
 // gymapp/backend/src/controllers/workoutController.ts
 
 import { Request, Response } from "express";
-import * as workoutService from "../services/workoutService";
+import * as workoutService from "../services/workoutService.ts";
 
 /**
  * Controller to create a new workout.

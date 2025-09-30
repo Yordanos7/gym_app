@@ -1,10 +1,9 @@
-import prisma from "../config/db";
-import { User } from "../../generated/prisma";
+import prisma from "../config/db.ts";
+import { Prisma, User } from "../../generated/prisma/client.js";
 import bcrypt from "bcryptjs";
 
-// this is the custom type for make the action on the database  the custome is the way to represent the data in the data base
-export type UserCreationData = Omit<User, "id" | "createdAt" | "updatedAt">; // use omit to create the user as the model ok
-export type UserUpdateData = Partial<UserCreationData>;
+export type UserCreationData = Prisma.UserCreateInput;
+export type UserUpdateData = Prisma.UserUpdateInput;
 
 export const getAllUsers = async (): Promise<User[]> => {
   return prisma.user.findMany();
@@ -32,13 +31,15 @@ export const updateUser = async (
   id: string,
   data: UserUpdateData
 ): Promise<User> => {
-  if (data.password) {
-    data.password = await bcrypt.hash(data.password, 10);
+  const updateData: Prisma.UserUpdateInput = { ...data };
+
+  if (typeof updateData.password === "string") {
+    updateData.password = await bcrypt.hash(updateData.password, 10);
   }
 
   return prisma.user.update({
     where: { id: id },
-    data: data,
+    data: updateData,
   });
 };
 // and this is for deleteing the user
