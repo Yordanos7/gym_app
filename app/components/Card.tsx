@@ -1,15 +1,21 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export function Button({ title, className, ...props }: ButtonProps) {
-  return (
-    <View
-      className={`w-full bg-blue-600 py-3 rounded-lg items-center justify-center ${className}`}
-      {...props}
-    >
-      <Text className="text-white text-center font-bold text-lg">{title}</Text>
-    </View>
-  );
+// here the love of ts
+
+interface CardProps {
+  children: React.ReactNode;
+  className: string;
 }
 
-export default Button;
+const Card: React.FC<CardProps> = ({ children, className }) => {
+  return (
+    <View
+      className={`bg-white rounded-lg p-4 my-2 shadow-md shadow-gray-300 ${className}`}
+    >
+      {children}
+    </View>
+  );
+};
+
+export default Card;
