@@ -1,7 +1,8 @@
+// gymapp/app/components/WorkoutItem.tsx
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Workout } from "../constants/types"; // Assuming you'll define Workout interface here
-import { formDate } from "../utils/formatDate";
+import { formatDate } from "../utils/formatDate"; // Utility for date formatting
 
 interface WorkoutItemProps {
   workout: Workout;
@@ -19,7 +20,7 @@ const WorkoutItem: React.FC<WorkoutItemProps> = ({ workout, onPress }) => {
         <Text className="text-lg font-bold text-gray-800">{workout.name}</Text>
         {workout.date && (
           <Text className="text-sm text-gray-600 mt-1">
-            {formDate(workout.date)}
+            {formatDate(workout.date)}
           </Text>
         )}
       </View>

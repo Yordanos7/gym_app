@@ -1,38 +1,40 @@
+// gymapp/app/components/Button.tsx
 import React from "react";
 import { TouchableOpacity, Text, ActivityIndicator } from "react-native";
+
 interface ButtonProps {
-  titel: string;
+  title: string;
   onPress: () => void;
   variant?: "primary" | "secondary" | "outline" | "danger";
   size?: "small" | "medium" | "large";
   isLoading?: boolean;
-  disable?: boolean;
-  className?: string;
-  textClassName?: string;
+  disabled?: boolean;
+  className?: string; // NativeWind class names
+  textClassName?: string; // NativeWind class names for text
 }
 
 const Button: React.FC<ButtonProps> = ({
-  titel,
+  title,
   onPress,
   variant = "primary",
   size = "medium",
   isLoading = false,
-  disable = false,
+  disabled = false,
   className = "",
   textClassName = "",
 }) => {
-  // this is for make the style more customized
+  // Base styles for the button
   let buttonBaseClasses =
     "py-3 px-5 rounded-lg flex-row items-center justify-center";
   let textBaseClasses = "font-semibold";
   let indicatorColor = "white";
 
-  // this is swith for make the button more customized
+  // Apply variant styles
   switch (variant) {
     case "primary":
-      (buttonBaseClasses += "bg-blue-600"),
-        (textBaseClasses += "text-white"),
-        (indicatorColor = "white");
+      buttonBaseClasses += " bg-blue-600";
+      textBaseClasses += " text-white";
+      indicatorColor = "white";
       break;
     case "secondary":
       buttonBaseClasses += " bg-gray-500";
@@ -51,7 +53,7 @@ const Button: React.FC<ButtonProps> = ({
       break;
   }
 
-  // and for the size
+  // Apply size styles
   switch (size) {
     case "small":
       buttonBaseClasses = buttonBaseClasses.replace("py-3 px-5", "py-2 px-4");
@@ -65,23 +67,23 @@ const Button: React.FC<ButtonProps> = ({
       textBaseClasses += " text-lg";
       break;
   }
-  // for improve the ui for the btn
 
-  if (disable || isLoading) {
+  // Apply disabled state
+  if (disabled || isLoading) {
     buttonBaseClasses += " opacity-60";
   }
 
   return (
     <TouchableOpacity
-      className={`${buttonBaseClasses}, ${className}`}
+      className={`${buttonBaseClasses} ${className}`}
       onPress={onPress}
-      disabled={disable || isLoading}
+      disabled={disabled || isLoading}
       activeOpacity={0.7}
     >
       {isLoading ? (
         <ActivityIndicator color={indicatorColor} />
       ) : (
-        <Text className={`${textBaseClasses} ${textClassName}`}>{titel}</Text>
+        <Text className={`${textBaseClasses} ${textClassName}`}>{title}</Text>
       )}
     </TouchableOpacity>
   );

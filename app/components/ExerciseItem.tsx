@@ -1,7 +1,6 @@
 // gymapp/app/components/ExerciseItem.tsx
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-
 import { Exercise } from "../constants/types"; // Assuming you'll define Exercise interface here
 
 interface ExerciseItemProps {

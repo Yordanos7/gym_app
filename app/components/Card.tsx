@@ -1,14 +1,13 @@
+// gymapp/app/components/Card.tsx
 import React from "react";
-import { Text, View } from "react-native";
-
-// here the love of ts
+import { View } from "react-native";
 
 interface CardProps {
   children: React.ReactNode;
-  className: string;
+  className?: string; // NativeWind class names
 }
 
-const Card: React.FC<CardProps> = ({ children, className }) => {
+const Card: React.FC<CardProps> = ({ children, className = "" }) => {
   return (
     <View
       className={`bg-white rounded-lg p-4 my-2 shadow-md shadow-gray-300 ${className}`}
