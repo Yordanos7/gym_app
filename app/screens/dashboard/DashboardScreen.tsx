@@ -19,6 +19,7 @@ import { useWorkoutStore } from "../../store/workoutStore";
 import { AppStackParamList } from "../../navigation/AppStack";
 import { useAuth } from "../../hooks/useAuth";
 
+// this type is for the navigation prop
 type DashboardScreenNavigationProp = NativeStackNavigationProp<
   AppStackParamList,
   "HomeTabs"
@@ -52,7 +53,7 @@ const DashboardScreen: React.FC = () => {
   };
 
   const handleViewAllExercises = () => {
-    navigation.navigate("HomeTabs", { screen: "ExerciseLibrary" });
+    navigation.navigate("ExerciseLibrary");
   };
 
   const handleCreateWorkout = () => {

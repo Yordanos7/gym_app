@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/clerk-expo";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import "./globals.css";
 import { Slot } from "expo-router";
+import { AuthProvider } from "./hooks/useAuth";
 
 export default function RootLayout() {
   return (
@@ -9,7 +10,9 @@ export default function RootLayout() {
       tokenCache={tokenCache}
       publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
     >
-      <Slot />
+      <AuthProvider>
+        <Slot />
+      </AuthProvider>
     </ClerkProvider>
   );
 }

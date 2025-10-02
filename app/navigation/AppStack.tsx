@@ -2,6 +2,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigatorScreenParams } from "@react-navigation/native"; // Import NavigatorScreenParams
 import { Text, View } from "react-native"; // For icons, you'd typically use a library like @expo/vector-icons
 import { colors } from "../constants/colors"; // Import colors for tab bar styling
 
@@ -18,7 +19,7 @@ import ProfileScreen from "../screens/profile/ProfileScreen";
 
 // Define the types for your main app stack navigator
 export type AppStackParamList = {
-  HomeTabs: undefined;
+  HomeTabs: NavigatorScreenParams<BottomTabParamList>; // This allows nested navigation
   WorkoutBuilder: { workoutId?: string }; // Example for passing params
   WorkoutSession: { workoutId: string };
   ExerciseDetail: { exerciseId: string };
