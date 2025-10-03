@@ -9,14 +9,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"; // this import is for the navigation which come from react-navigation you can check it here https://reactnavigation.org/docs/typescript
 import Card from "../../components/Card";
 import Button from "../../components/Button";
 import WorkoutItem from "../../components/WorkoutItem";
 import ExerciseItem from "../../components/ExerciseItem";
 import Chart from "../../components/Chart";
-import { useWorkoutStore } from "../../store/workoutStore";
-import { AppStackParamList } from "../../navigation/AppStack";
+import { useWorkoutStore } from "../../store/workoutStore"; // this import is for the store which you can check it here https://github.com/pmndrs/zustand
+import { AppStackParamList } from "../../navigation/AppStack"; // ??
 import { useAuth } from "../../hooks/useAuth";
 
 // this type is for the navigation prop
@@ -35,7 +35,7 @@ const DashboardScreen: React.FC = () => {
     fetchExercises,
     isLoading,
     error,
-  } = useWorkoutStore();
+  } = useWorkoutStore(); // here we use exercise store from the one i created in the   store/workoutStore.ts
 
   useEffect(() => {
     fetchWorkouts();
