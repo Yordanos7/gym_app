@@ -6,6 +6,7 @@ import categoryRoutes from "./routes/categoryRoutes.ts";
 import exerciseRoutes from "./routes/exerciseRoutes.ts";
 import workoutRoutes from "./routes/workoutRoutes.ts";
 import progressRoutes from "./routes/progressRoutes.ts";
+import clerkRoutes from "./routes/clerkRoutes.ts";
 
 const app = express();
 const port = 5000;
@@ -19,6 +20,7 @@ app.use("/api/categories", categoryRoutes); // <== this is for categories route
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/progress", progressRoutes);
+app.use("/api/clerk", clerkRoutes);
 
 app.listen(port, () => {
   console.log("the server is running");

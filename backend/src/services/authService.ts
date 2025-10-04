@@ -1,4 +1,4 @@
-import { PrismaClient, User } from "../../generated/prisma";
+import { PrismaClient, User } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -14,14 +14,19 @@ export const registerUser = async (
   name: string
 ): Promise<User> => {
   const hashedPassword = await bcrypt.hash(password, 10);
-  const user = await prisma.user.create({
-    data: {
-      email,
-      password: hashedPassword,
-      name,
-    },
-  });
-  return user;
+  try {
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        name,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error("Error creating user:", error);
+    throw new Error("Could not create user.");
+  }
 };
 
 export const loginUser = async (email: string, password: string) => {
