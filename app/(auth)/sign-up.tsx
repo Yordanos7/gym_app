@@ -5,7 +5,7 @@ import { Link, useRouter } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import { Screen } from "expo-router/build/views/Screen";
 WebBrowser.maybeCompleteAuthSession();
-import Stack from "expo-router";
+
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();

@@ -5,14 +5,14 @@
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec ts-node src/app.ts"
+    "dev": "prisma generate && nodemon --exec ts-node src/app.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@clerk/clerk-sdk-node": "^4.13.23",
-    "@prisma/client": "^6.16.2",
+    "@clerk/backend": "^2.17.1",
+    "@prisma/client": "^6.16.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
@@ -27,7 +27,7 @@
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.5.2",
     "nodemon": "^3.1.10",
-    "prisma": "^6.16.2",
+    "prisma": "^6.16.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   }

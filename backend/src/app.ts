@@ -12,6 +12,9 @@ const app = express();
 const port = 5000;
 app.use(cors());
 app.use(morgan("dev")); // Logs HTTP requests to the console
+// place clerkRoutes before express.json() to handle raw body
+app.use("/", clerkRoutes);
+
 app.use(express.json()); // Parses incoming JSON requests
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,7 +23,6 @@ app.use("/api/categories", categoryRoutes); // <== this is for categories route
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/progress", progressRoutes);
-app.use("/api/clerk", clerkRoutes);
 
 app.listen(port, () => {
   console.log("the server is running");

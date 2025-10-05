@@ -10,3 +10,5 @@ router.post(
 );
 
 export default router;
+
+// in this code i use express.raw({ type: 'application/json' }) because svix uses unparsed json
