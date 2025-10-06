@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <View>
       <SignedIn>
-        <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
+        <Text>Welcome, {user?.fullName ?? "Guest"}!</Text>
         <SignOutButton />
       </SignedIn>
       <SignedOut>

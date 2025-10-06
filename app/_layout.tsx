@@ -33,25 +33,12 @@ const InitialLayout = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoaded) return;
-
-    SplashScreen.hideAsync();
-
-    const inAuthGroup = segments[0] === "(auth)";
-
-    if (isSignedIn && inAuthGroup) {
-      router.replace("/(home)");
-    } else if (!isSignedIn && !inAuthGroup) {
-      router.replace("/(auth)/sign-up");
+    if (isLoaded) {
+      SplashScreen.hideAsync();
     }
-  }, [isSignedIn, isLoaded, segments, router]);
+  }, [isLoaded]);
 
-  return (
-    <Stack>
-      <Stack.Screen name="(home)" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-    </Stack>
-  );
+  return <Slot />;
 };
 
 export default function RootLayout() {

@@ -1,5 +1,14 @@
-import { Stack } from "expo-router/stack";
+import { Stack } from "expo-router";
 
-export default function Layout() {
-  return <Stack.Screen options={{ headerShown: false }} />;
+export default function HomeLayout() {
+  return (
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{
+          headerTitle: "GymApp",
+        }}
+      />
+    </Stack>
+  );
 }
